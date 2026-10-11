@@ -1,0 +1,98 @@
+{
+  "id": "vkteams",
+  "categories": ["channels"],
+  "name": "VK Teams",
+  "description": "OpenClaw VK Teams (Среда) channel plugin — личные сообщения, файлы, фото, видео.",
+  "activation": {
+    "onStartup": true
+  },
+  "channels": ["vkteams"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  },
+  "channelConfigs": {
+    "vkteams": {
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Display name for this account"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the channel account is enabled"
+          },
+          "token": {
+            "type": "string",
+            "description": "Bot token VK Teams"
+          },
+          "tokenFile": {
+            "type": "string",
+            "description": "Path to a file containing the bot token"
+          },
+          "apiBaseUrl": {
+            "type": "string",
+            "description": "API base URL (default: https://api.icq.net/bot/v1)"
+          },
+          "pollTime": {
+            "type": "integer",
+            "description": "Long-poll timeout in seconds (default: 30)"
+          },
+          "dmPolicy": {
+            "type": "string",
+            "enum": ["allowlist", "open", "pairing", "disabled"],
+            "description": "DM policy"
+          },
+          "allowFrom": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Allowlist of user IDs (userId or sn@domain)"
+          },
+          "defaultTo": {
+            "type": "string",
+            "description": "Default target for outbound sends"
+          },
+          "accounts": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "enabled": { "type": "boolean" },
+                "token": { "type": "string" },
+                "tokenFile": { "type": "string" },
+                "apiBaseUrl": { "type": "string" },
+                "pollTime": { "type": "integer" },
+                "dmPolicy": {
+                  "type": "string",
+                  "enum": ["allowlist", "open", "pairing", "disabled"]
+                },
+                "allowFrom": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "defaultTo": { "type": "string" }
+              },
+              "additionalProperties": false
+            },
+            "description": "Named accounts"
+          }
+        }
+      },
+      "uiHints": {
+        "token": {
+          "label": "Bot token",
+          "sensitive": true
+        },
+        "tokenFile": {
+          "label": "Token file path",
+          "sensitive": true
+        }
+      }
+    }
+  }
+}

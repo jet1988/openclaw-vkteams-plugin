@@ -1,0 +1,59 @@
+{
+  "name": "@openclaw/vkteams",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OpenClaw VK Teams (Среда) channel plugin",
+  "type": "module",
+  "dependencies": {
+    "zod": "^3.25.76"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.8.1-0"
+  },
+  "peerDependenciesMeta": {
+    "openclaw": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.5"
+  },
+  "openclaw": {
+    "compat": {
+      "pluginApi": ">=2026.8.1-0",
+      "minGatewayVersion": "2026.8.1"
+    },
+    "build": {
+      "openclawVersion": "2026.9.8",
+      "pluginSdkVersion": "2026.9.8"
+    },
+    "extensions": [
+      "./index.ts"
+    ],
+    "runtimeExtensions": [
+      "./dist/index.js"
+    ],
+    "setupEntry": "./setup-entry.ts",
+    "runtimeSetupEntry": "./dist/setup-entry.js",
+    "setupFeatures": {
+      "configPromotion": true
+    },
+    "channel": {
+      "id": "vkteams",
+      "label": "VK Teams",
+      "selectionLabel": "VK Teams (Среда)",
+      "detailLabel": "VK Teams Bot",
+      "docsPath": "/channels/vkteams",
+      "docsLabel": "vkteams",
+      "blurb": "Общение с агентом через VK Teams (Среда).",
+      "systemImage": "message.fill",
+      "markdownCapable": true,
+      "quickstartAllowFrom": true
+    },
+    "install": {
+      "npmSpec": "@openclaw/vkteams",
+      "localPath": "extensions/vkteams",
+      "defaultChoice": "local"
+    }
+  }
+}
